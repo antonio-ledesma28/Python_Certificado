@@ -1,6 +1,9 @@
 #Realizar un ejemplo de menú, donde podemos escoger las distintas opciones 
 #hasta que seleccionamos la opción de “Salir”.
 import os
+#Funciones
+def sumar(a, b):
+    return a + b
 
 while True:
     print("Elige una opción")
@@ -21,7 +24,7 @@ while True:
     elif x  == 2:
         n1 = int(input("Ingresa el primer número a sumar: "))
         n2 = int(input("Ingresa el segundo número número a sumar: "))
-        n3 =n1 + n2
+        n3 = sumar(n1, n2)
         print("La suma del " , n1, " más " , n2, " es: ", n3)
         
     elif x  == 3:
