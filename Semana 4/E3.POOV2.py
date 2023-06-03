@@ -46,10 +46,10 @@ class Cuenta:
 
 
 class CuentaJoven(Cuenta):
-    def __init__(self, bonificacion, edad, cantidad):
+    def __init__(self, titular, cantidad = 0, bonificacion = 0, edad = 0):
+        super().__init__(titular, cantidad)
         self.__bonificacion = bonificacion
         self.__edad = edad
-        self.__cantidad = cantidad
 
     def getBonificacion(self):
         return self.__bonificacion
@@ -62,15 +62,9 @@ class CuentaJoven(Cuenta):
 
     def setEdad(self, edad):
         self.__edad = edad   
-    
-    def getCantidad(self):
-        return self.__cantidad
-
-    def setCantidad(self, cantidad):
-        self.__cantidad = cantidad
 
     def titularValido(self):
-        if(self.getEdad() >= 20) and (self.getEdad() < 25):
+        if(self.getEdad() >= 18) and (self.getEdad() < 25):
             print("El titular es válido")
             return True
         
@@ -79,13 +73,14 @@ class CuentaJoven(Cuenta):
             return False
         
     def retirar(self, cantidad):
-        if self.titularValido() == True:
+        if self.titularValido() == True and cantidad <= self.getCantidad():
             resta = self.getCantidad() - cantidad
-            print("Operación exitosa, su saldo actual es: ",resta)
+            self.setCantidad(resta)
+            print("Retiro exitosa, su saldo actual es: ",resta)
 
         else:
             resta = 0
-            print("Operación denegada, su saldo actual es: ",self.getCantidad())
+            print("Retiro denegada, su saldo actual es: ",self.getCantidad())
             
 
     def mostrar(self):
@@ -100,17 +95,19 @@ cuenta.mostrar()
 cuenta.retirar(500)
 cuenta.mostrar()
 '''
-
-#Inicialización de objetos
-c = CuentaJoven("20%", 10, 10000)
-c.titularValido()
+c = CuentaJoven("Antonio", 10000, "30%", 19)
+c.mostrar()
 c.retirar(1000)
 c.mostrar()
 
 print()
-d = CuentaJoven("30%", 22, 20000)
-d.titularValido()
+d = CuentaJoven("Luis", 20000, "15%", 17)
+d.mostrar()
 d.retirar(1000)
 d.mostrar()
 
-
+print()
+d = CuentaJoven("Juan", 15000, "12%", 18)
+d.mostrar()
+d.retirar(16000)
+d.mostrar()

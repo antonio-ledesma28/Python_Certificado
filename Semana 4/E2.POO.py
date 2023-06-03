@@ -25,7 +25,8 @@ class Cuenta:
             self.__cantidad += cantidad
 
     def retirar(self, cantidad):
-        self.__cantidad -= cantidad
+        if cantidad > 0:
+            self.__cantidad -= cantidad
 
 # Ejemplo de uso
 cuenta = Cuenta("Juan Pérez", 1000.0)
