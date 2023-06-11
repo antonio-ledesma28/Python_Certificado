@@ -43,10 +43,10 @@ while vidas != 0 and len(letras) != 0:
             print("Fallastes, te queda sólo ", vidas, "vida")
 
 if vidas == 0:
-    print("Fallaste. GAME OVER")
+    print("FALLASTE. GAME OVER")
 
 if (len(letras) == 0):
-    print("FELICIDADES, GANASTE")
+    print("FELICIDADES, GANASTE, LA PALABRA CORRECTA ERA:",palabraOculta.capitalize())
 
 
 """
